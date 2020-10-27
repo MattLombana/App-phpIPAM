@@ -2,16 +2,16 @@
 
 ## First Time Prerequisites
 
-1. `rm ./Data/example/.gitkeep`
+1. `rm ./Data/mysql/.gitkeep`
+2. Run [Traefik](https://github.com/mattlombana/App-Traefik)
 
 ## Running the Containers
 
-1. Run `./Config/gen_certs.sh` to generate the SSL certificates (alternatively,
-   add custom certs to the private folder)
-2. Update the `server_name` in [nginx.conf](./Config/nginx.conf)
-3. Update the following lines in [docker-compose.yml](./Docker/docker-compose.yml)
+1. Update the following lines in [docker-compose.yml](./Docker/docker-compose.yml)
     * `MYSQL_ROOT_PASSWORD=example`
-4. Run `docker-compose -f ./Docker/docker-compose.yml up -d`
+2. Update the Traefik host label in [docker-compose.yml](./Docker/docker-compose.yml)
+    * ``"traefik.http.routers.phpipam.rule=Host(`localhost`)"``
+3. Run `docker-compose -f ./Docker/docker-compose.yml up -d`
 
 ## First Time Setup
 
